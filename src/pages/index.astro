@@ -1,13 +1,9 @@
 ---
-import Experience from "../components/Experience.astro";
+import { getCollection } from "astro:content";
 
-import Oak from "./Experience/Oak.astro";
-import { data } from "./data"
-
-const { oak } = data
-
+const experienceCollection = await getCollection("experience")
+const renderedExperience = await Promise.all(experienceCollection.map(async exp => await exp.render()))
 ---
-
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -15,17 +11,18 @@ const { oak } = data
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<style>
-			h1 {
-			  color: purple;
-			  font-size: 4rem;
-			}
-		  </style>
+		</style>
 		<title>My Astro Site</title>
 	</head>
 	<body>
 		<h1>My Astro Site is cool</h1>
-		<Experience title={oak.title}>
-			<Oak />
-		</Experience>
+		{
+			renderedExperience.map(exp => <exp.Content />)
+		}
 	</body>
 </html>
+<style is:global>
+	h3 {
+		color: red;
+	}
+</style>
