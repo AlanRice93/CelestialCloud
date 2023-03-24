@@ -1,7 +1,9 @@
-import { z, defineCollection } from "astro:content"
+import { z, defineCollection } from "astro:content";
 
-const experienceCollection = defineCollection({})
+const experienceCollection = defineCollection({});
+const educationCollection = defineCollection({});
 
 export const collections = {
   experience: experienceCollection,
-}
+  education: educationCollection,
+};
