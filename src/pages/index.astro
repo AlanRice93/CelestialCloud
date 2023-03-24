@@ -1,28 +1,96 @@
 ---
 import { getCollection } from "astro:content";
 
-const experienceCollection = await getCollection("experience")
-const renderedExperience = await Promise.all(experienceCollection.map(async exp => await exp.render()))
+const experienceCollection = await getCollection("experience");
+const renderedExperience = await Promise.all(
+  experienceCollection.map(async (exp) => await exp.render())
+);
 ---
+
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<style>
-		</style>
-		<title>My Astro Site</title>
-	</head>
-	<body>
-		<h1>My Astro Site is cool</h1>
-		{
-			renderedExperience.map(exp => <exp.Content />)
-		}
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <style></style>
+    <title>alan rice</title>
+  </head>
+  <body>
+    <h1>
+      Al<span class="flicker-fast">a</span><span class="flicker-slow">n</span>
+      <span class="flicker-slow">R</span>i<span class="flicker-fast">c</span>e
+    </h1>
+    {renderedExperience.map((exp) => <exp.Content />)}
+  </body>
+  <style is:global>
+    @import url("https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&display=swap");
+
+    body {
+      background: black;
+      color: white;
+      background: #200f4d;
+      background-image: url("/assets/run.jpg");
+      background-size: cover;
+    }
+    h3 {
+      text-shadow: 1px 0px 4px #ffd5ff, 2px 0px 4px #17fff7, 3px 0px 4px #ffd5ff,
+        2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
+        20px 0vw 200px #d42cca, 40px 0vw 200px #17fff7;
+      color: #ffd5ff;
+      font-family: "Streetbrush";
+    }
+    @font-face {
+      font-family: "Streetbrush";
+      src: url("/fonts/go3v2.ttf");
+      /* font-weight: normal;
+      font-style: normal;
+      font-display: swap; */
+    }
+
+    h1 {
+      font-family: "Great Vibes", cursive;
+      font-family: "Merriweather", serif;
+      font-family: "Rubik 80s Fade", cursive;
+      font-family: "Streetbrush";
+
+      font-size: 5rem;
+      font-weight: 400;
+      color: #ffd5ff;
+      /* font-weight: 400; */
+      letter-spacing: 2px;
+      text-shadow: 1px 0px 4px #ffd5ff, 2px 0px 4px #17fff7, 3px 0px 4px #ffd5ff,
+        2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
+        20px 0vw 200px #d42cca, 40px 0vw 200px #17fff7;
+    }
+
+    @keyframes flicker {
+      0%,
+      19.999%,
+      22%,
+      62.999%,
+      64%,
+      64.999%,
+      70%,
+      100% {
+        //text-shadow: none;
+        opacity: 0.99;
+      }
+      20%,
+      21.999%,
+      63%,
+      63.999%,
+      65%,
+      69.999% {
+        opacity: 0.9;
+      }
+    }
+    .flicker-slow {
+      animation: flicker 3s linear infinite;
+    }
+
+    .flicker-fast {
+      animation: flicker 1s linear infinite;
+    }
+  </style>
 </html>
-<style is:global>
-	h3 {
-		color: red;
-	}
-</style>
