@@ -7,6 +7,25 @@ const renderedExperience = await Promise.all(
 );
 ---
 
+<script>
+  const swapInterval = setInterval(() => {
+    const header = document.querySelector(".header");
+    const random = Math.random();
+
+    console.log(random);
+    if (!header) return;
+
+    if (random < 0.15) {
+      header.innerHTML = `<h1 class="heading_name">A<span class="flicker-slow">l</span>an Ri<span class="flicker-fast">c</span>e</h1>`;
+      return;
+    }
+
+    header.innerHTML = `<h1 class="heading">V<span class="flicker-slow">a</span>por<span class="flicker-fast">D</span>ev</h1>`;
+  }, 250);
+
+  window.addEventListener("beforeunload", () => clearInterval(swapInterval));
+</script>
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -17,80 +36,110 @@ const renderedExperience = await Promise.all(
     <title>alan rice</title>
   </head>
   <body>
-    <h1>
-      Al<span class="flicker-fast">a</span><span class="flicker-slow">n</span>
-      <span class="flicker-slow">R</span>i<span class="flicker-fast">c</span>e
+    <h1 class="header">
+      A<span class="flicker-slow">l</span>an Ri<span class="flicker-fast"
+        >c</span
+      >e
     </h1>
-    {renderedExperience.map((exp) => <exp.Content />)}
   </body>
-  <style is:global>
-    @import url("https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&display=swap");
-
-    body {
-      background: black;
-      color: white;
-      background: #200f4d;
+  {renderedExperience.map((exp) => <exp.Content />)}
+</html>
+<style is:global>
+  body {
+    background: black;
+    color: white;
+    font-family: "GangOfThree";
+    /* background: #200f4d;
       background-image: url("/assets/run.jpg");
-      background-size: cover;
-    }
-    h3 {
-      text-shadow: 1px 0px 4px #ffd5ff, 2px 0px 4px #17fff7, 3px 0px 4px #ffd5ff,
+      background-size: cover; */
+  }
+  h3 {
+    /* text-shadow: 1px 0px 4px #ffd5ff, 2px 0px 4px #17fff7, 3px 0px 4px #ffd5ff,
         2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
-        20px 0vw 200px #d42cca, 40px 0vw 200px #17fff7;
-      color: #ffd5ff;
-      font-family: "Streetbrush";
-    }
-    @font-face {
-      font-family: "Streetbrush";
-      src: url("/fonts/go3v2.ttf");
-      /* font-weight: normal;
+        20px 0vw 200px #d42cca, 40px 0vw 200px #17fff7; */
+    color: #ffd5ff;
+  }
+  @font-face {
+    font-family: "GangOfThree";
+    src: url("/fonts/go3.ttf");
+    /* font-weight: normal;
       font-style: normal;
       font-display: swap; */
+  }
+  @font-face {
+    font-family: "Cind";
+    src: url("/fonts/cind.otf");
+  }
+
+  h1 {
+    font-family: "GangOfThree";
+
+    font-size: 5rem;
+    font-weight: 400;
+    color: #ffd5ff;
+    /* font-weight: 400; */
+    letter-spacing: 2px;
+    text-shadow: 1px 0px 4px #ffd5ff, 2px 0px 4px #17fff7, 3px 0px 3px #ffd5ff,
+      2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
+      20px 0vw 200px #d42cca, 40px 0vw 200px #17fff7;
+    will-change: text-shadow, opacity;
+    animation: pulsate 0.01s infinite ease-in-out alternate;
+    transform: translateZ(0);
+  }
+
+  .heading_name {
+    text-shadow: 1px 0px 4px #39ff14, 2px 0px 4px #39ff14, 3px 0px 3px #ffd5ff,
+      2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
+      20px 0vw 200px #d42cca, 40px 0vw 200px #39ff14;
+    opacity: 0.25;
+  }
+
+  @keyframes flicker {
+    0%,
+    19.999%,
+    22%,
+    62.999%,
+    64%,
+    64.999%,
+    70%,
+    100% {
+      opacity: 0.99;
+    }
+    20%,
+    21.999%,
+    63%,
+    63.999%,
+    65%,
+    69.999% {
+      opacity: 0.5;
+    }
+  }
+  .flicker-slow {
+    transform: translateZ(0);
+    animation: flicker 3s linear infinite;
+    will-change: text-shadow, opacity;
+  }
+
+  .flicker-fast {
+    transform: translateZ(0);
+    animation: flicker 1s linear infinite;
+    will-change: text-shadow, opacity;
+  }
+  @keyframes pulsate {
+    0% {
+      opacity: 1;
     }
 
-    h1 {
-      font-family: "Great Vibes", cursive;
-      font-family: "Merriweather", serif;
-      font-family: "Rubik 80s Fade", cursive;
-      font-family: "Streetbrush";
-
-      font-size: 5rem;
-      font-weight: 400;
-      color: #ffd5ff;
-      /* font-weight: 400; */
-      letter-spacing: 2px;
-      text-shadow: 1px 0px 4px #ffd5ff, 2px 0px 4px #17fff7, 3px 0px 4px #ffd5ff,
-        2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
-        20px 0vw 200px #d42cca, 40px 0vw 200px #17fff7;
+    50% {
+      opacity: 0.95;
     }
 
-    @keyframes flicker {
-      0%,
-      19.999%,
-      22%,
-      62.999%,
-      64%,
-      64.999%,
-      70%,
-      100% {
-        //text-shadow: none;
-        opacity: 0.99;
-      }
-      20%,
-      21.999%,
-      63%,
-      63.999%,
-      65%,
-      69.999% {
-        opacity: 0.9;
-      }
-    }
-    .flicker-slow {
-      animation: flicker 3s linear infinite;
+    51% {
+      opacity: 1;
     }
 
-    .flicker-fast {
-      animation: flicker 1s linear infinite;
+    100% {
+      opacity: 1;
     }
-  </style>
-</html>
+  }
+</style>
