@@ -5,6 +5,11 @@ const experienceCollection = await getCollection("experience");
 const renderedExperience = await Promise.all(
   experienceCollection.map(async (exp) => await exp.render())
 );
+
+const educationCollection = await getCollection("education");
+const renderedEducation = await Promise.all(
+  educationCollection.map(async (exp) => await exp.render())
+);
 ---
 
 <script></script>
@@ -30,6 +35,14 @@ const renderedExperience = await Promise.all(
     <h2>WORK EXPERIENCE</h2>
     {
       renderedExperience.map((exp) => (
+        <div class="content">
+          <exp.Content />
+        </div>
+      ))
+    }
+    <h2>Education</h2>
+    {
+      renderedEducation.map((exp) => (
         <div class="content">
           <exp.Content />
         </div>
@@ -103,6 +116,7 @@ const renderedExperience = await Promise.all(
       0 0 45px #3856ff;
 
     font-size: 45px;
+    text-decoration: underline;
   }
 
   h3 {
