@@ -15,9 +15,10 @@
     "astro": "^2.0.18"
   },
   "devDependencies": {
-    "sst": "^2.2.2",
+    "astro-sst": "^2.2.2",
     "aws-cdk-lib": "2.62.2",
     "constructs": "10.1.156",
-    "astro-sst": "^2.2.2"
+    "prettier-plugin-astro": "^0.8.0",
+    "sst": "^2.2.2"
   }
 }

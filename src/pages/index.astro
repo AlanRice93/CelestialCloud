@@ -1,28 +1,251 @@
 ---
 import { getCollection } from "astro:content";
 
-const experienceCollection = await getCollection("experience")
-const renderedExperience = await Promise.all(experienceCollection.map(async exp => await exp.render()))
+const experienceCollection = await getCollection("experience");
+const renderedExperience = await Promise.all(
+  experienceCollection.map(async (exp) => await exp.render())
+);
 ---
+
+<script></script>
+
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<style>
-		</style>
-		<title>My Astro Site</title>
-	</head>
-	<body>
-		<h1>My Astro Site is cool</h1>
-		{
-			renderedExperience.map(exp => <exp.Content />)
-		}
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <style></style>
+    <title>alan rice</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1>
+        <span class="flicker-slow">Va</span>por<span class="flicker-fast"
+          >De</span
+        >v
+      </h1>
+      <h1 id="name">(Alan Rice)</h1>
+    </div>
+    <h2>WORK EXPERIENCE</h2>
+    {
+      renderedExperience.map((exp) => (
+        <div class="content">
+          <exp.Content />
+        </div>
+      ))
+    }
+  </body>
 </html>
+
 <style is:global>
-	h3 {
-		color: red;
-	}
+  body {
+    background: black;
+    color: white;
+    font-family: "VCR";
+    background-color: black; /* Set the background color to black  */
+    /* background-image: url("/assets/swarm.jpg"); */
+    /* background-repeat: repeat; */
+    position: relative;
+    padding: 20px;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.2;
+    /* background-image: url("assets/90sshapes.jpg"); */
+    background-image: url("assets/color.jpg");
+    /* background-image: url("assets/treedark.jpg"); */
+    background-repeat: repeat;
+    background-size: 250px;
+  }
+
+  h1 {
+    font-family: "GangOfThree";
+
+    font-size: 5rem;
+    font-weight: 400;
+    color: #ffd5ff;
+    letter-spacing: 2px;
+    text-shadow: 1px 0px 4px #ffd5ff, 2px 0px 4px #17fff7, 3px 0px 3px #ffd5ff,
+      2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
+      20px 0vw 200px #d42cca, 40px 0vw 200px #17fff7;
+    will-change: text-shadow, opacity;
+    transform: translateZ(0);
+    margin: 0;
+  }
+  @font-face {
+    font-family: "GangOfThree";
+    src: url("/fonts/go3.ttf");
+  }
+  @font-face {
+    font-family: "Cind";
+    src: url("/fonts/cind.otf");
+  }
+
+  @font-face {
+    font-family: "VCR";
+    src: url("/fonts/vcr.ttf");
+  }
+
+  h2 {
+    color: #ffd5ff;
+    text-transform: uppercase;
+    color: #fff;
+
+    text-shadow: 0 0 3px #3856ff, 0 0 6px #3856ff, 0 0 9px #3856ff,
+      0 0 12px #3856ff, 0 0 21px #3856ff, 0 0 24px #3856ff, 0 0 30px #3856ff,
+      0 0 45px #3856ff;
+
+    font-size: 45px;
+  }
+
+  h3 {
+    color: #ffd5ff;
+    text-transform: uppercase;
+    color: #fff;
+
+    text-shadow: 0 0 3px #ff9900, 0 0 6px #ff9900, 0 0 9px #ff9900,
+      0 0 12px #ff9900, 0 0 21px #ff9900, 0 0 24px #ff9900, 0 0 30px #ff9900,
+      0 0 45px #ff9900;
+
+    font-size: 30px;
+    margin: 10px 0;
+  }
+
+  li,
+  p {
+    color: #ffffff; /* sets the text color to white */
+    text-shadow: 0 0 5px rgba(255, 192, 203, 0.5),
+      0 0 10px rgba(255, 192, 203, 0.5), 0 0 15px rgba(255, 192, 203, 0.5),
+      0 0 20px rgba(255, 192, 203, 0.5); /* sets a less noticeable neon text shadow */
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  a {
+    color: #00ffff; /* sets the text color to a bright neon blue */
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.8),
+      0 0 25px rgba(0, 255, 255, 0.8), 0 0 35px rgba(0, 255, 255, 0.8),
+      0 0 45px rgba(0, 255, 255, 0.8); /* sets a neon blue text shadow */
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  strong {
+    color: #d8a1ff; /* sets the text color to a lighter purple */
+    text-shadow: 0 0 15px rgba(213, 28, 255, 0.8),
+      0 0 25px rgba(213, 28, 255, 0.8), 0 0 35px rgba(213, 28, 255, 0.8),
+      0 0 45px rgba(213, 28, 255, 0.8); /* sets a more intense neon text shadow */
+  }
+
+  .header {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+  }
+
+  a:hover {
+    text-decoration: underline; /* adds an underline on hover */
+  }
+
+  #name {
+    animation: flicky 1.5s infinite;
+    color: #42f5e6;
+    font-size: 60px;
+  }
+
+  .blink {
+    color: rgba(250, 147, 200, 0.15);
+    text-shadow: 1px 0px 4px rgba(255, 213, 255, 0.1),
+      2px 0px 4px rgba(255, 213, 255, 0.1), 3px 0px 3px rgba(255, 213, 255, 0.1),
+      2px 0px 3px rgba(255, 213, 255, 0.1), 2px 3px 15px #d42cca, 2px 0px 15px,
+      5px 0px 125px, 20px 0vw 200px rgba(255, 213, 255, 0.1),
+      40px 0vw 200px rgba(255, 213, 255, 0.1);
+    opacity: 0;
+  }
+
+  .heading_name {
+    position: absolute;
+    color: #03fcdb;
+    text-shadow: 1px 0px 4px #39ff14, 2px 0px 4px #39ff14, 3px 0px 3px #ffd5ff,
+      2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
+      20px 0vw 200px #d42cca, 40px 0vw 200px #39ff14;
+  }
+
+  .content {
+    margin-bottom: 50px;
+    max-width: 900px;
+  }
+
+  @keyframes flicker {
+    0%,
+    19.999%,
+    22%,
+    62.999%,
+    64%,
+    64.999%,
+    70%,
+    100% {
+      opacity: 0.99;
+    }
+    20%,
+    21.999%,
+    63%,
+    63.999%,
+    65%,
+    69.999% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes flicky {
+    0% {
+      opacity: 1; /* Start with full opacity */
+      text-shadow: none; /* Remove the neon glow effect */
+    }
+    5% {
+      opacity: 0.1; /* Drop the opacity to half during the first 5% of the animation */
+      text-shadow: none; /* Remove the neon glow effect */
+    }
+    29.99% {
+      opacity: 0.1; /* Keep the opacity at half until the 25% mark */
+      text-shadow: none; /* Remove the neon glow effect */
+    }
+    30%,
+    99.99% {
+      opacity: 1; /* Restore the opacity to full during the next 5% of the animation */
+      text-shadow: 1px 0px 4px #39ff14, 2px 0px 4px #39ff14, 3px 0px 3px #ffd5ff,
+        2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
+        20px 0vw 200px #d42cca, 40px 0vw 200px #39ff14; /* Add the neon glow effect */
+    }
+    100% {
+      opacity: 1; /* End with full opacity */
+      text-shadow: 1px 0px 4px #39ff14, 2px 0px 4px #39ff14, 3px 0px 3px #ffd5ff,
+        2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
+        20px 0vw 200px #d42cca, 40px 0vw 200px #39ff14; /* Add the neon glow effect */
+    }
+  }
+
+  .flicker-slow {
+    transform: translateZ(0);
+    animation: flicker 5s linear infinite;
+    will-change: text-shadow, opacity;
+  }
+
+  .flicker-fast {
+    transform: translateZ(0);
+    animation: flicker 2s linear infinite;
+    will-change: text-shadow, opacity;
+  }
 </style>
