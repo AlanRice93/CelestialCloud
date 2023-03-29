@@ -12,7 +12,8 @@
     "sst:dev": "sst dev"
   },
   "dependencies": {
-    "astro": "^2.0.18"
+    "astro": "^2.0.18",
+    "astro-feather-icons": "^1.0.2"
   },
   "devDependencies": {
     "astro-sst": "^2.2.2",

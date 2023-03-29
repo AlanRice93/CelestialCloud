@@ -5,12 +5,21 @@ const experienceCollection = await getCollection("experience");
 const renderedExperience = await Promise.all(
   experienceCollection.map(async (exp) => await exp.render())
 );
+
+const educationCollection = await getCollection("education");
+const renderedEducation = await Promise.all(
+  educationCollection.map(async (exp) => await exp.render())
+);
 ---
 
 <script></script>
 
 <html lang="en">
   <head>
+    <script
+      src="https://kit.fontawesome.com/72b743c284.js"
+      crossorigin="anonymous"
+    ></script>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
@@ -21,15 +30,49 @@ const renderedExperience = await Promise.all(
   <body>
     <div class="header">
       <h1>
-        <span class="flicker-slow">Va</span>por<span class="flicker-fast"
+        <span class="flicker_slow">Va</span>por<span class="flicker_fast"
           >De</span
         >v
       </h1>
       <h1 id="name">(Alan Rice)</h1>
     </div>
+    <div class="social_container">
+      <a
+        class="social_icon flicker_fast"
+        href="mailto:mail@alanrice.me"
+        target="_blank"
+      >
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+      <a
+        class="social_icon flicker_slow"
+        href="https://github.com/vaprdev"
+        target="_blank"
+      >
+        <i class="fa-brands fa-github-alt"></i>
+      </a>
+      <a
+        class="social_icon flicker_medium"
+        href="https://www.linkedin.com/in/alanricecode"
+        target="_blank"
+      >
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a class="social_icon" href="https://twitter.com/vprdev" target="_blank">
+        <i class="fa-brands fa-twitter"></i>
+      </a>
+    </div>
     <h2>WORK EXPERIENCE</h2>
     {
       renderedExperience.map((exp) => (
+        <div class="content">
+          <exp.Content />
+        </div>
+      ))
+    }
+    <h2>Education</h2>
+    {
+      renderedEducation.map((exp) => (
         <div class="content">
           <exp.Content />
         </div>
@@ -44,10 +87,14 @@ const renderedExperience = await Promise.all(
     color: white;
     font-family: "VCR";
     background-color: black; /* Set the background color to black  */
-    /* background-image: url("/assets/swarm.jpg"); */
-    /* background-repeat: repeat; */
     position: relative;
     padding: 20px;
+  }
+
+  .ok {
+    text-shadow: 1px 0px 4px #ffd5ff, 2px 0px 4px #17fff7, 3px 0px 3px #ffd5ff,
+      2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
+      20px 0vw 200px #d42cca, 40px 0vw 200px #17fff7v;
   }
   body::before {
     content: "";
@@ -58,9 +105,7 @@ const renderedExperience = await Promise.all(
     height: 100%;
     z-index: -1;
     opacity: 0.2;
-    /* background-image: url("assets/90sshapes.jpg"); */
     background-image: url("assets/color.jpg");
-    /* background-image: url("assets/treedark.jpg"); */
     background-repeat: repeat;
     background-size: 250px;
   }
@@ -68,7 +113,7 @@ const renderedExperience = await Promise.all(
   h1 {
     font-family: "GangOfThree";
 
-    font-size: 5rem;
+    font-size: 8rem;
     font-weight: 400;
     color: #ffd5ff;
     letter-spacing: 2px;
@@ -78,6 +123,8 @@ const renderedExperience = await Promise.all(
     will-change: text-shadow, opacity;
     transform: translateZ(0);
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
   }
   @font-face {
     font-family: "GangOfThree";
@@ -93,6 +140,41 @@ const renderedExperience = await Promise.all(
     src: url("/fonts/vcr.ttf");
   }
 
+  .social_icon {
+    color: #fff;
+    font-size: 30px;
+    transition: opacity 200ms ease;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #fff;
+    margin-right: 20px;
+    /* border-radius: 100%; */
+    padding: 0.4em;
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
+      0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
+    text-decoration: none;
+  }
+  .social_icon:hover {
+    opacity: 0.8;
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
+      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
+  }
+
+  .social_container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
+      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
+    padding: 15px;
+
+    /* border-radius: 15px; */
+  }
+
   h2 {
     color: #ffd5ff;
     text-transform: uppercase;
@@ -103,6 +185,7 @@ const renderedExperience = await Promise.all(
       0 0 45px #3856ff;
 
     font-size: 45px;
+    border-radius: 2rem;
   }
 
   h3 {
@@ -151,12 +234,12 @@ const renderedExperience = await Promise.all(
   .header {
     display: flex;
     align-items: flex-end;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     flex-wrap: wrap;
-  }
-
-  a:hover {
-    text-decoration: underline; /* adds an underline on hover */
+    display: inline-flex;
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
+      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
+    padding: 15px;
   }
 
   #name {
@@ -186,6 +269,21 @@ const renderedExperience = await Promise.all(
   .content {
     margin-bottom: 50px;
     max-width: 900px;
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
+      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
+    padding: 15px;
+  }
+
+  .section {
+    border: 0.2rem solid #fff;
+    border-radius: 2rem;
+    padding: 0.4em;
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
+      0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
+    display: inline-flex;
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
+      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
+    padding: 15px;
   }
 
   @keyframes flicker {
@@ -237,13 +335,19 @@ const renderedExperience = await Promise.all(
     }
   }
 
-  .flicker-slow {
+  .flicker_slow {
     transform: translateZ(0);
     animation: flicker 5s linear infinite;
     will-change: text-shadow, opacity;
   }
 
-  .flicker-fast {
+  .flicker_medium {
+    transform: translateZ(0);
+    animation: flicker 3.5s linear infinite;
+    will-change: text-shadow, opacity;
+  }
+
+  .flicker_fast {
     transform: translateZ(0);
     animation: flicker 2s linear infinite;
     will-change: text-shadow, opacity;
