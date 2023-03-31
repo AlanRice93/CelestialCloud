@@ -22,22 +22,29 @@ const renderedEducation = await Promise.all(
     ></script>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <style></style>
-    <title>alan rice</title>
+    <title>Vapor Dev</title>
   </head>
   <body>
     <div class="section">
-      <div class="header blue_border">
+      <div class="title_container blue_border">
         <h1>
           <span class="flicker_slow">Va</span>por<span class="flicker_fast"
             >De</span
           >v
         </h1>
-        <h1 id="name">(Alan Rice)</h1>
+        <h1 id="header_name">(<span>Alan</span>&nbsp;Rice)</h1>
       </div>
       <div class="social_container blue_border">
+        <a
+          class="social_icon flicker_fast"
+          href="https://www.twitch.tv/vapor__dev"
+          target="_blank"
+        >
+          <i class="fa-brands fa-twitch"></i>
+        </a>
         <a
           class="social_icon flicker_fast"
           href="mailto:mail@alanrice.me"
@@ -69,7 +76,7 @@ const renderedEducation = await Promise.all(
       </div>
     </div>
     <div class="section">
-      <h2>WORK</h2>
+      <h2 class="flicker_slow">WORK</h2>
 
       {
         renderedExperience.map((exp) => (
@@ -91,40 +98,36 @@ const renderedEducation = await Promise.all(
     </div>
   </body>
 </html>
-
 <style is:global>
   body {
     background: black;
     color: white;
     font-family: "VCR";
-    background-color: black; /* Set the background color to black  */
-    position: relative;
+    margin: 0;
     padding: 20px;
-  }
-
-  .ok {
-    text-shadow: 1px 0px 4px #ffd5ff, 2px 0px 4px #17fff7, 3px 0px 3px #ffd5ff,
-      2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
-      20px 0vw 200px #d42cca, 40px 0vw 200px #17fff7v;
-  }
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: 0.2;
-    background-image: url("assets/color.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url("assets/color.jpg");
     background-repeat: repeat;
     background-size: 300px;
   }
 
-  h1 {
+  @font-face {
     font-family: "GangOfThree";
+    src: url("/fonts/go3.ttf");
+  }
+  @font-face {
+    font-family: "VCR";
+    src: url("/fonts/vcr.ttf");
+  }
 
-    font-size: 5rem;
+  .title_container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 6rem;
     font-weight: 400;
     color: #ffd5ff;
     letter-spacing: 2px;
@@ -136,70 +139,17 @@ const renderedEducation = await Promise.all(
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-  }
-  @font-face {
+    max-width: 100%;
     font-family: "GangOfThree";
-    src: url("/fonts/go3.ttf");
-  }
-  @font-face {
-    font-family: "Cind";
-    src: url("/fonts/cind.otf");
-  }
-
-  @font-face {
-    font-family: "VCR";
-    src: url("/fonts/vcr.ttf");
-  }
-
-  .blue_border {
-    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
-      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
-    padding: 15px;
-    border: 2px solid #fff;
-  }
-
-  .social_icon {
-    color: #fff;
-    font-size: 30px;
-    transition: opacity 200ms ease;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 3px solid #fff;
-    margin-right: 20px;
-    /* border-radius: 100%; */
-    padding: 0.4em;
-    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
-      0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
-    text-decoration: none;
-  }
-  .social_icon:hover {
-    opacity: 0.8;
-    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
-      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
-  }
-
-  .social_container {
-    flex-wrap: wrap;
-    margin-bottom: 50px;
-    display: flex;
-    width: max-content;
-
-    /* border-radius: 15px; */
   }
 
   h2 {
     color: #ffd5ff;
     text-transform: uppercase;
     color: #fff;
-
     text-shadow: 0 0 3px #3856ff, 0 0 6px #3856ff, 0 0 9px #3856ff,
       0 0 12px #3856ff, 0 0 21px #3856ff, 0 0 24px #3856ff, 0 0 30px #3856ff,
       0 0 45px #3856ff;
-
     font-size: 45px;
     border-radius: 2rem;
     margin: 0 0 10px 0;
@@ -220,99 +170,40 @@ const renderedEducation = await Promise.all(
 
   li,
   p {
-    color: #ffffff; /* sets the text color to white */
+    color: #ffffff;
     text-shadow: 0 0 5px rgba(255, 192, 203, 0.5),
       0 0 10px rgba(255, 192, 203, 0.5), 0 0 15px rgba(255, 192, 203, 0.5),
-      0 0 20px rgba(255, 192, 203, 0.5); /* sets a less noticeable neon text shadow */
+      0 0 20px rgba(255, 192, 203, 0.5);
     font-size: 20px;
     line-height: 24px;
     margin: 15px 0;
   }
 
-  li {
-    margin-bottom: 10px;
-  }
-
   a {
-    color: #00ffff; /* sets the text color to a bright neon blue */
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.8),
-      0 0 25px rgba(0, 255, 255, 0.8), 0 0 35px rgba(0, 255, 255, 0.8),
-      0 0 45px rgba(0, 255, 255, 0.8); /* sets a neon blue text shadow */
+    color: #fff;
+    text-shadow: 0 0 15px rgba(57, 255, 20, 0.8),
+      0 0 25px rgba(57, 255, 20, 0.8), 0 0 35px rgba(57, 255, 20, 0.8),
+      0 0 45px rgba(57, 255, 20, 0.8);
+
     text-transform: uppercase;
     font-style: normal;
+    transform: translateZ(0);
+    animation: flicker 3.5s linear infinite;
+    will-change: text-shadow, opacity;
   }
 
-  strong {
-    color: #d8a1ff; /* sets the text color to a lighter purple */
-    text-shadow: 0 0 15px rgba(213, 28, 255, 0.8),
-      0 0 25px rgba(213, 28, 255, 0.8), 0 0 35px rgba(213, 28, 255, 0.8),
-      0 0 45px rgba(213, 28, 255, 0.8); /* sets a more intense neon text shadow */
-  }
-
-  .header {
-    display: flex;
-    width: max-content;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-  }
-
-  #name {
-    animation: flicky 1.5s infinite;
+  #header_name {
+    animation: onOff 1.5s infinite;
     color: #42f5e6;
   }
 
-  .blink {
-    color: rgba(250, 147, 200, 0.15);
-    text-shadow: 1px 0px 4px rgba(255, 213, 255, 0.1),
-      2px 0px 4px rgba(255, 213, 255, 0.1), 3px 0px 3px rgba(255, 213, 255, 0.1),
-      2px 0px 3px rgba(255, 213, 255, 0.1), 2px 3px 15px #d42cca, 2px 0px 15px,
-      5px 0px 125px, 20px 0vw 200px rgba(255, 213, 255, 0.1),
-      40px 0vw 200px rgba(255, 213, 255, 0.1);
-    opacity: 0;
+  strong {
+    color: #d8a1ff;
+    text-shadow: 0 0 15px rgba(213, 28, 255, 0.8),
+      0 0 25px rgba(213, 28, 255, 0.8), 0 0 35px rgba(213, 28, 255, 0.8),
+      0 0 45px rgba(213, 28, 255, 0.8);
   }
-
-  .heading_name {
-    position: absolute;
-    color: #03fcdb;
-    text-shadow: 1px 0px 4px #39ff14, 2px 0px 4px #39ff14, 3px 0px 3px #ffd5ff,
-      2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
-      20px 0vw 200px #d42cca, 40px 0vw 200px #39ff14;
-  }
-
-  .content {
-    margin-bottom: 20px;
-    max-width: 900px;
-    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
-      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
-    padding: 15px;
-  }
-
-  .section {
-    margin-bottom: 50px;
-  }
-
-  @keyframes flicker {
-    0%,
-    19.999%,
-    22%,
-    62.999%,
-    64%,
-    64.999%,
-    70%,
-    100% {
-      opacity: 0.99;
-    }
-    20%,
-    21.999%,
-    63%,
-    63.999%,
-    65%,
-    69.999% {
-      opacity: 0.5;
-    }
-  }
-
-  @keyframes flicky {
+  @keyframes onOff {
     0% {
       opacity: 1; /* Start with full opacity */
       text-shadow: none; /* Remove the neon glow effect */
@@ -337,6 +228,73 @@ const renderedEducation = await Promise.all(
       text-shadow: 1px 0px 4px #39ff14, 2px 0px 4px #39ff14, 3px 0px 3px #ffd5ff,
         2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
         20px 0vw 200px #d42cca, 40px 0vw 200px #39ff14; /* Add the neon glow effect */
+    }
+  }
+
+  .social_icon {
+    color: #fff;
+    font-size: 30px;
+    transition: opacity 200ms ease;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #fff;
+    margin: 10px 10px 10px 0;
+    padding: 0.4em;
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
+      0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
+    text-decoration: none;
+    border-radius: 100%;
+  }
+
+  .social_icon:hover {
+    opacity: 0.8;
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
+      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
+  }
+
+  .social_container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+  }
+
+  .blue_border {
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
+      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  .content {
+    margin-bottom: 20px;
+    max-width: 900px;
+    padding: 15px;
+    background: rgba(56, 86, 255, 0.2);
+  }
+
+  @keyframes flicker {
+    0%,
+    19.999%,
+    22%,
+    62.999%,
+    64%,
+    64.999%,
+    70%,
+    100% {
+      opacity: 0.99;
+    }
+    20%,
+    21.999%,
+    63%,
+    63.999%,
+    65%,
+    69.999% {
+      opacity: 0.5;
     }
   }
 
