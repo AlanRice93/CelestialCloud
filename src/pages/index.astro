@@ -21,7 +21,7 @@ const renderedEducation = await Promise.all(
       crossorigin="anonymous"
     ></script>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <style></style>
@@ -29,7 +29,7 @@ const renderedEducation = await Promise.all(
   </head>
   <body>
     <div class="section">
-      <div class="title_container blue_border">
+      <div class="title_container blue_r">
         <h1>
           <span class="flicker_slow">Va</span>por<span class="flicker_fast"
             >De</span
@@ -100,15 +100,16 @@ const renderedEducation = await Promise.all(
 </html>
 <style is:global>
   body {
+    max-width: 1200px;
     background: black;
     color: white;
     font-family: "VCR";
     margin: 0;
     padding: 20px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-      url("assets/color.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+      url("/assets/color.jpg");
     background-repeat: repeat;
-    background-size: 300px;
+    background-size: 150px;
   }
 
   @font-face {
@@ -151,7 +152,6 @@ const renderedEducation = await Promise.all(
       0 0 12px #3856ff, 0 0 21px #3856ff, 0 0 24px #3856ff, 0 0 30px #3856ff,
       0 0 45px #3856ff;
     font-size: 45px;
-    border-radius: 2rem;
     margin: 0 0 10px 0;
   }
 
@@ -242,7 +242,7 @@ const renderedEducation = await Promise.all(
     align-items: center;
     justify-content: center;
     border: 3px solid #fff;
-    margin: 10px 10px 10px 0;
+    margin: 10px;
     padding: 0.4em;
     box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
       0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
@@ -259,14 +259,12 @@ const renderedEducation = await Promise.all(
   .social_container {
     display: inline-flex;
     flex-wrap: wrap;
-    margin-bottom: 100px;
   }
 
   .blue_border {
     box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
       0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
-    border: 2px solid #fff;
-    border-radius: 10px;
+    border: 1px solid #fff;
     padding: 5px;
   }
 
@@ -274,7 +272,7 @@ const renderedEducation = await Promise.all(
     margin-bottom: 20px;
     max-width: 900px;
     padding: 15px;
-    background: rgba(56, 86, 255, 0.2);
+    background: rgba(56, 86, 255, 0.1);
   }
 
   @keyframes flicker {
@@ -314,5 +312,9 @@ const renderedEducation = await Promise.all(
     transform: translateZ(0);
     animation: flicker 2s linear infinite;
     will-change: text-shadow, opacity;
+  }
+
+  .section {
+    margin-bottom: 100px;
   }
 </style>
