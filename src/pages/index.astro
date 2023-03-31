@@ -28,56 +28,67 @@ const renderedEducation = await Promise.all(
     <title>alan rice</title>
   </head>
   <body>
-    <div class="header">
-      <h1>
-        <span class="flicker_slow">Va</span>por<span class="flicker_fast"
-          >De</span
-        >v
-      </h1>
-      <h1 id="name">(Alan Rice)</h1>
+    <div class="section">
+      <div class="header blue_border">
+        <h1>
+          <span class="flicker_slow">Va</span>por<span class="flicker_fast"
+            >De</span
+          >v
+        </h1>
+        <h1 id="name">(Alan Rice)</h1>
+      </div>
+      <div class="social_container blue_border">
+        <a
+          class="social_icon flicker_fast"
+          href="mailto:mail@alanrice.me"
+          target="_blank"
+        >
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+        <a
+          class="social_icon flicker_slow"
+          href="https://github.com/vaprdev"
+          target="_blank"
+        >
+          <i class="fa-brands fa-github-alt"></i>
+        </a>
+        <a
+          class="social_icon flicker_medium"
+          href="https://www.linkedin.com/in/alanricecode"
+          target="_blank"
+        >
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a
+          class="social_icon"
+          href="https://twitter.com/vprdev"
+          target="_blank"
+        >
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+      </div>
     </div>
-    <div class="social_container">
-      <a
-        class="social_icon flicker_fast"
-        href="mailto:mail@alanrice.me"
-        target="_blank"
-      >
-        <i class="fa-solid fa-envelope"></i>
-      </a>
-      <a
-        class="social_icon flicker_slow"
-        href="https://github.com/vaprdev"
-        target="_blank"
-      >
-        <i class="fa-brands fa-github-alt"></i>
-      </a>
-      <a
-        class="social_icon flicker_medium"
-        href="https://www.linkedin.com/in/alanricecode"
-        target="_blank"
-      >
-        <i class="fa-brands fa-linkedin"></i>
-      </a>
-      <a class="social_icon" href="https://twitter.com/vprdev" target="_blank">
-        <i class="fa-brands fa-twitter"></i>
-      </a>
+    <div class="section">
+      <h2>WORK</h2>
+
+      {
+        renderedExperience.map((exp) => (
+          <div class="content blue_border">
+            <exp.Content />
+          </div>
+        ))
+      }
     </div>
-    <h2>WORK EXPERIENCE</h2>
-    {
-      renderedExperience.map((exp) => (
-        <div class="content">
-          <exp.Content />
-        </div>
-      ))
-    }
-    <h2>Education</h2>
-    {
-      renderedEducation.map((exp) => (
-        <div class="content">
-          <exp.Content />
-        </div>
-      ))
-    }
+    <div class="section">
+      <h2>Education</h2>
+      {
+        renderedEducation.map((exp) => (
+          <div class="content blue_border">
+            <exp.Content />
+          </div>
+        ))
+      }
+    </div>
   </body>
 </html>
 
@@ -107,13 +118,13 @@ const renderedEducation = await Promise.all(
     opacity: 0.2;
     background-image: url("assets/color.jpg");
     background-repeat: repeat;
-    background-size: 250px;
+    background-size: 300px;
   }
 
   h1 {
     font-family: "GangOfThree";
 
-    font-size: 8rem;
+    font-size: 5rem;
     font-weight: 400;
     color: #ffd5ff;
     letter-spacing: 2px;
@@ -138,6 +149,13 @@ const renderedEducation = await Promise.all(
   @font-face {
     font-family: "VCR";
     src: url("/fonts/vcr.ttf");
+  }
+
+  .blue_border {
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
+      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
+    padding: 15px;
+    border: 2px solid #fff;
   }
 
   .social_icon {
@@ -165,12 +183,10 @@ const renderedEducation = await Promise.all(
   }
 
   .social_container {
-    display: inline-flex;
     flex-wrap: wrap;
     margin-bottom: 50px;
-    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
-      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
-    padding: 15px;
+    display: flex;
+    width: max-content;
 
     /* border-radius: 15px; */
   }
@@ -186,6 +202,7 @@ const renderedEducation = await Promise.all(
 
     font-size: 45px;
     border-radius: 2rem;
+    margin: 0 0 10px 0;
   }
 
   h3 {
@@ -198,7 +215,7 @@ const renderedEducation = await Promise.all(
       0 0 45px #ff9900;
 
     font-size: 30px;
-    margin: 10px 0;
+    margin: 0;
   }
 
   li,
@@ -209,6 +226,7 @@ const renderedEducation = await Promise.all(
       0 0 20px rgba(255, 192, 203, 0.5); /* sets a less noticeable neon text shadow */
     font-size: 20px;
     line-height: 24px;
+    margin: 15px 0;
   }
 
   li {
@@ -233,19 +251,14 @@ const renderedEducation = await Promise.all(
 
   .header {
     display: flex;
-    align-items: flex-end;
-    margin-bottom: 30px;
+    width: max-content;
     flex-wrap: wrap;
-    display: inline-flex;
-    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
-      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
-    padding: 15px;
+    margin-bottom: 10px;
   }
 
   #name {
     animation: flicky 1.5s infinite;
     color: #42f5e6;
-    font-size: 60px;
   }
 
   .blink {
@@ -267,7 +280,7 @@ const renderedEducation = await Promise.all(
   }
 
   .content {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     max-width: 900px;
     box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
       0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
@@ -275,15 +288,7 @@ const renderedEducation = await Promise.all(
   }
 
   .section {
-    border: 0.2rem solid #fff;
-    border-radius: 2rem;
-    padding: 0.4em;
-    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
-      0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
-    display: inline-flex;
-    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3856ff,
-      0 0 0.8rem #3856ff, 0 0 2.8rem #3856ff, inset 0 0 1.3rem #3856ff;
-    padding: 15px;
+    margin-bottom: 50px;
   }
 
   @keyframes flicker {
@@ -322,7 +327,7 @@ const renderedEducation = await Promise.all(
     }
     30%,
     99.99% {
-      opacity: 1; /* Restore the opacity to full during the next 5% of the animation */
+      opacity: 1; /* Restore the opacity to full during the next 5% of the aninimation */
       text-shadow: 1px 0px 4px #39ff14, 2px 0px 4px #39ff14, 3px 0px 3px #ffd5ff,
         2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px,
         20px 0vw 200px #d42cca, 40px 0vw 200px #39ff14; /* Add the neon glow effect */
